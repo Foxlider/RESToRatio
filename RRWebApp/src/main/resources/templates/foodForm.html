@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Welcome</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
+</head>
+<body>
+		<div th:replace="fragments/header :: header">
+		<h1> THIS IS A DEFAULT HEADER</h1>
+	</div>
+	<form th:action="@{/addFood}"
+         th:object="${foodForm}" method="POST">
+		<fieldset >
+			<legend >Add your Food ! </legend>
+			<div >
+				<label for="form-name">Name</label>
+				<div >
+					<input id="form-name" type="text"
+						placeholder="Food name..." th:field="*{name}">
+				</div>
+			</div>
+			<div >
+				<label  for="form-region">Region</label>
+				<div >
+					<input  id="form-region" type="text"
+						placeholder="Food region..." th:field="*{region}">
+				</div>
+				<label  for="form-taste">Taste</label>
+				<div >
+					<input id="form-taste" type="number"
+						placeholder="Food taste..." th:field="*{taste}">
+				</div>
+				<label  for="form-imgUrl">Image URL</label>
+				<div >
+					<input  id="form-imgUrl" type="text"
+						placeholder="Image URL..." th:field="*{imgUrl}">
+				</div>
+			</div>
+			<div >
+				<input type="submit"  class="uk-button uk-button-default" value="Create" />
+			</div>
+
+		</fieldset>
+	</form>
+
+</body>
+
+</html>

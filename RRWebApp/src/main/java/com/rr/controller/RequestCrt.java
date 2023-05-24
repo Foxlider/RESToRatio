@@ -24,4 +24,25 @@ public class RequestCrt {
 
 		return "index";
 	}
+	
+	@RequestMapping(value = { "/addFood"}, method = RequestMethod.GET)
+    public String addFood(Model model) {
+    	FoodFormDTO poneyForm = new PoneyFormDTO();
+    	model.addAttribute("foodForm", foodForm);
+    	return "foodForm";
+    }
+
+	@RequestMapping(value = { "/addFood"}, method = RequestMethod.POST)
+    public String addFood(Model model, @ModelAttribute("foodForm") FoodFormDTO foodForm) {
+		Food f=foodDao.addFood(foodForm.getName(),foodForm.getRegion(),foodForm.getTaste(),foodForm.getImgUrl());
+		model.addAttribute("food",f );
+		return "poneyView";
+	}
+	
+	@RequestMapping(value = { "/list"}, method = RequestMethod.GET)
+    public String viewList(Model model) {
+  	  model.addAttribute("foodList",foodDao.getFoodList() );
+  	  return "foodViewList";
+    }
+
 }
