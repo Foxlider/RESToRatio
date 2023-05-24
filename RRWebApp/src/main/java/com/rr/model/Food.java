@@ -12,11 +12,35 @@ public class Food  {
 		this.taste = 50;
 		this.imgUrl="";
 	}
-	public Food(int taste,String name,String region, String imgUrl) {
+	public Food(String name,String region, int taste, String imgUrl) {
 		this.name = name;
 		this.region = region;
 		this.taste = taste;
 		this.imgUrl= imgUrl;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public int getTaste() {
+		return taste;
+	}
+	public void setTaste(int taste) {
+		this.taste = taste;
+	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
   // GETTER AND SETTER

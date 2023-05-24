@@ -7,10 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import com.rr.model.*;
 
 @Controller // AND NOT @RestController
 public class RequestCrt {
 
+	@Autowired
+	FoodDao foodDao;
+	
 	@Value("${welcome.message}")
 	private String message;
 
@@ -27,7 +31,7 @@ public class RequestCrt {
 	
 	@RequestMapping(value = { "/addFood"}, method = RequestMethod.GET)
     public String addFood(Model model) {
-    	FoodFormDTO poneyForm = new PoneyFormDTO();
+    	FoodFormDTO foodForm = new FoodFormDTO();
     	model.addAttribute("foodForm", foodForm);
     	return "foodForm";
     }
@@ -36,7 +40,7 @@ public class RequestCrt {
     public String addFood(Model model, @ModelAttribute("foodForm") FoodFormDTO foodForm) {
 		Food f=foodDao.addFood(foodForm.getName(),foodForm.getRegion(),foodForm.getTaste(),foodForm.getImgUrl());
 		model.addAttribute("food",f );
-		return "poneyView";
+		return "foodView";
 	}
 	
 	@RequestMapping(value = { "/list"}, method = RequestMethod.GET)
@@ -44,5 +48,11 @@ public class RequestCrt {
   	  model.addAttribute("foodList",foodDao.getFoodList() );
   	  return "foodViewList";
     }
+	
+	@RequestMapping(value = { "/view"}, method = RequestMethod.GET)
+    public String view(Model model) {
+	    model.addAttribute("food",foodDao.getRandomFood() );
+	    return "foodView";
+	}
 
 }

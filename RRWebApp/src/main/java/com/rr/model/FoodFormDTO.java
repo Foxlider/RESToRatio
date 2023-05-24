@@ -25,6 +25,25 @@ public class FoodFormDTO  {
 		this.taste = taste;
 		this.imgUrl=imgUrl;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public int getTaste() {
+		return taste;
+	}
+	public void setTaste(int taste) {
+		this.taste = taste;
+	}
+}
 
     // GETTER AND SETTER
 

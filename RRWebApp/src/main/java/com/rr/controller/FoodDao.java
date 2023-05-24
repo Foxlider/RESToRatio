@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rr.model.Food;
 
@@ -12,6 +16,8 @@ import com.rr.model.Food;
 public class FoodDao {
 	private List<Food> foodList;
 	private Random randomGenerator;
+	
+	
 
 	public FoodDao() {
 		foodList=new ArrayList<>();
@@ -56,11 +62,7 @@ public class FoodDao {
 		return f;
 	}
 	
-	@RequestMapping(value = { "/view"}, method = RequestMethod.GET)
-    public String view(Model model) {
-	    model.addAttribute("myFood",foodDao.getRandomFood() );
-	    return "foodView";
-	}
+	
 
 }
 
