@@ -10,13 +10,13 @@
   		<h1> THIS IS A DEFAULT HEADER</h1>
   	</div>
   	<div>
-  		<h2> SHOP</h2>
+  		<h2> INVENTORY</h2>
   	</div>
   	<ul>
-  		<li th:each="food : ${foodList}">
+  		<li th:each="food : ${inventory}">
   			<div>
   				<img th:src="${food.imgUrl}" alt="" style="max-width:25%;">
-  				<a th:href="@{'/buyFood'(id=${food.id})}"><h3 th:utext="${food.name}">...</h3></a>
+  				<a th:href="@{'/sellFood'(id=${food.id})}"><h3 th:utext="${food.name}">...</h3></a>
   				<h5 th:text="'Region:  '+${food.region}">...</h5>
     			<h5 th:text="'Taste:  '+${food.taste}">...</h5>
     			<h5 th:text="'Cost:  '+${food.cost}">...</h5>
